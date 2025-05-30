@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{{name}} - {{title}} CV with {{experience}}">
+  <title>CV – {{name}}</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #333;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm;
+      margin: 0 auto;
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 0;
+      color: #333;
+    }
+
+    h2 {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #444;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1px;
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+
+    h3 {
+      font-size: 11px;
+      font-weight: 600;
+      margin: 6px 0 1px;
+      color: #444;
+    }
+
+    p,
+    li {
+      font-size: 10px;
+      line-height: 1.2;
+      margin: 1px 0;
+    }
+
+    strong {
+      font-weight: 600;
+      color: #444;
+    }
+
+    ul {
+      margin: 1px 0 3px 8px;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 1px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+      align-items: flex-start;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1px;
+    }
+
+    .contact-item a {
+      color: #333;
+      text-decoration: none;
+      font-size: 10px;
+    }
+
+    .contact-icon {
+      margin-right: 3px;
+      color: #555;
+      width: 10px;
+      display: inline-block;
+      font-size: 10px;
+    }
+
+    .summary-section {
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+
+    .summary-item {
+      margin-bottom: 1px;
+      position: relative;
+      padding-left: 8px;
+    }
+
+    .summary-item:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #555;
+    }
+
+    .job {
+      margin-bottom: 6px;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1px;
+    }
+
+    .job-title {
+      font-weight: 600;
+      margin: 0;
+      font-size: 11px;
+      color: #444;
+    }
+
+    .job-date {
+      color: #555;
+      text-align: right;
+      font-size: 10px;
+    }
+
+    .job-company {
+      font-style: italic;
+      margin-bottom: 1px;
+      font-size: 10px;
+    }
+
+    .job-columns {
+      display: flex;
+      gap: 6px;
+    }
+
+    .job-left-column,
+    .job-right-column {
+      flex: 1;
+    }
+
+    .tech-list {
+      margin-top: 1px;
+    }
+
+    .heading-prefix {
+      font-weight: bold;
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 10px;
+      line-height: 1.3;
+    }
+
+    .two-columns {
+      display: flex;
+      gap: 10px;
+    }
+
+    .two-columns .left-column {
+      flex: 1;
+    }
+
+    .two-columns .right-column {
+      flex: 1;
+    }
+
+    .skills-table {
+      display: table;
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 4px;
+      font-size: 10px;
+    }
+
+    .skills-row {
+      display: table-row;
+    }
+
+    .skills-label {
+      display: table-cell;
+      font-weight: 600;
+      color: #444;
+      width: 75px;
+      padding: 1px 3px 1px 0;
+      vertical-align: top;
+    }
+
+    .skills-content {
+      display: table-cell;
+      padding: 1px 0;
+      line-height: 1.2;
+    }
+
+    .skills-compact {
+      width: 100%;
+      display: table;
+      font-size: 10px;
+      border-collapse: collapse;
+    }
+
+    .skills-compact-row {
+      display: table-row;
+    }
+
+    .skills-compact-cell {
+      display: table-cell;
+      padding: 1px 2px;
+      vertical-align: top;
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      .page {
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+        padding: 5mm;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header class="header">
+      <div>
+        <h1><a href="{{linkedin}}" style="text-decoration: none; color: inherit;">{{name}}</a></h1>
+      </div>
+      <div class="header-right">
+        <p><strong>{{title}}</strong><br>
+          {{experience}}<br>
+          {{timezone}}</p>
+      </div>
+    </header>
+
+    <!-- CONTACT INFORMATION -->
+    <section>
+      <div class="two-columns">
+        <div class="left-column">
+          <div class="contact-item">
+            <span><strong>Phone:</strong> <a href="{{whatsapp}}">{{phone}}</a></span>
+          </div>
+          <div class="contact-item">
+            <span><strong>Email:</strong> <a href="mailto:{{email}}">{{email}}</a></span>
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="contact-item">
+            <span><strong>Location:</strong> {{location}}</span>
+          </div>
+          <div class="contact-item">
+            <span><strong>Languages:</strong> {{languages}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-columns">
+        <div class="left-column">
+          <div class="contact-item">
+            <span><strong>LinkedIn:</strong> <a href="{{linkedin}}">{{linkedin}}</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-columns">
+        <div class="left-column">
+          <div class="contact-item">
+            <span><strong>GitHub:</strong> <a href="{{github}}">{{github}}</a></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section>
+      <h2>Summary</h2>
+      <div class="summary-section">
+        {{#each summary}}
+        <div class="summary-item">{{this}}</div>
+        {{/each}}
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section>
+      <h2>Education</h2>
+      <div class="summary-section">
+        <div class="summary-item">
+          <strong>Degree:</strong> {{education}}
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills-table">
+        {{#each skills}}
+        <div class="skills-row">
+          <div class="skills-label">{{@key}}:</div>
+          <div class="skills-content">{{this}}</div>
+        </div>
+        {{/each}}
+      </div>
+    </section>
+
+    <!-- WORK EXPERIENCE -->
+    <section>
+      <h2>Professional Experience</h2>
+
+      {{#each jobs}}
+      <div class="job">
+        <div class="job-header">
+          <h3 class="job-title">{{title}}</h3>
+          <span class="job-date">{{date}}</span>
+        </div>
+        <p class="job-company"><strong>Company:</strong> {{company}}</p>
+
+        <div class="job-columns">
+          <div class="job-left-column">
+            <p><strong>Project:</strong> {{project}}</p>
+
+            <p><strong>Key Achievements:</strong></p>
+            <ul>
+              {{#each achievements}}
+              <li>{{this}}</li>
+              {{/each}}
+            </ul>
+          </div>
+
+          <div class="job-right-column">
+            <p><strong>Responsibilities:</strong></p>
+            <ul>
+              {{#each responsibilities}}
+              <li>{{this}}</li>
+              {{/each}}
+            </ul>
+
+            <p><strong>Technologies Used:</strong> {{technologies}}</p>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </section>
+  </div>
+</body>
+
+</html>
